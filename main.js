@@ -1,8 +1,6 @@
 let openMenuMobile = false;
 
-function toggleMenuMobile(menuToggle) {
-  const navList = document.querySelector(".nav__list");
-  
+function toggleMenuMobile(menuToggle, navList) {
   if (!openMenuMobile) {
     navList.style.display = "grid";
     menuToggle.firstElementChild.classList.add("hidden");
@@ -15,6 +13,14 @@ function toggleMenuMobile(menuToggle) {
     openMenuMobile = false;
   }
 };
+
+function menuControl(navList) {
+  if (window.innerWidth >= 768) {
+    navList.style.display = "grid";
+  } else if (window.innerWidth <= 426) {
+    navList.style.display = "none";
+  }
+}
 
 function menuToggleAriaControl(menuToggle) {
   if (window.innerWidth <= 426) {
@@ -29,11 +35,16 @@ function menuToggleAriaControl(menuToggle) {
 
 window.addEventListener("DOMContentLoaded", function(ev) {
   const menuToggle = document.querySelector(".menu__toggle");
+  const navList = document.querySelector(".nav__list");
 
   menuToggleAriaControl(menuToggle);
+  menuControl(navList);
 
-  menuToggle.addEventListener("click", toggleMenuMobile.bind(null, menuToggle));
+  menuToggle.addEventListener("click", toggleMenuMobile.bind(null, menuToggle, navList));
 
-  window.addEventListener("resize", menuToggleAriaControl.bind(null, menuToggle));
+  window.addEventListener("resize", function(ev) {
+    menuToggleAriaControl(menuToggle);
+    menuControl(navList);
+  });
 
 });
