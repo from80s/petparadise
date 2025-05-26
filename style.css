@@ -124,20 +124,28 @@
     }
   }
 
-  .our__services {
-    margin-top: 2rem;
-
+  .our__services,
+  .testimonials {
     & .heading {
+      margin-bottom: 4rem;
       font-size: 2.2rem;
       font-weight: 700;
     }
-
+  
     & .subheading {
       margin-top: 4rem;
       font-size: 3.6rem;
       font-weight: 900;
       line-height: 4.5rem;
     }
+  }
+
+  .our__services{
+    margin-top: 2rem;
+  }
+
+  .testimonials {
+    margin-top: 6rem;
   }
 
 }
@@ -210,6 +218,27 @@
     grid-template-columns: repeat(auto-fill, minmax(301px, 1fr));
     gap: 1.2rem;
 
+    & .card,
+    & .card__image {
+      & .icon {
+        font-size: 2.4rem;
+      }
+  
+      & .title {
+        margin: 1.6rem  0 0.4rem 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+  
+      & .description {
+        margin-bottom: 2rem;
+        color: var(--color-secondary);
+        font-size: 1.4rem;
+        line-height: 1.5;
+        display: block;
+      }
+    }
+
     & .card {
       border: 1px solid var(--color-gray-lighten);
       border-radius: 0.8rem;
@@ -220,19 +249,15 @@
       align-items: center;
       gap: 1.2rem;
 
-      .icon {
-        font-size: 2.4rem;
-      }
+    }
 
-      & .title {
-        margin-bottom: 0.4rem;
-        font-size: 1.6rem;
-        font-weight: 700;
-      }
-
-      & .description {
-        color: var(--color-secondary);
-        font-size: 1.4rem;
+    & .card__image {
+      & .image {
+        width: 301px;
+        height: 301px;
+        border-radius: 0.8rem;
+        object-fit: cover;
+        object-position: center;;
       }
     }
   }
@@ -275,6 +300,13 @@
     .wrapper {
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+
+    .card__image {
+      & .image {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }
